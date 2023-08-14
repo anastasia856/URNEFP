@@ -1,0 +1,1068 @@
+// Подключение шрифтов =================================
+@import url(https://fonts.googleapis.com/css?family=Inter:300,regular,500,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Exo+2:300,regular,600,700&display=swap);
+
+
+// Переменные ==========================================
+// Основной шрифт
+$fontFamily: "Exo 2";
+// Основные цвета
+$colorText: black; // цвет шрифта
+// Ширина ограничивающего контейнера
+$maxWidthContainer: 1200px;
+// Отступ безопасности при адаптиве
+$minPadding: 10px;
+
+// Шаблоны и миксины ====================================
+@mixin textBase($fz, $fw) {
+    font-size: $fz;
+    font-weight: $fw;
+    font-style: normal;
+    line-height: normal;
+}
+
+// Обнуление стилей =====================================
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+a, a:visited {text-decoration: none;}
+ul li {list-style: none;}
+button {cursor: pointer;}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $fontFamily;
+    color: $colorText;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0.5px solid rgba(138, 138, 138, 0.5);
+    width: 100%;
+    background: #FFF;
+    z-index: 3;
+
+	&__container {
+        max-width: $maxWidthContainer;
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+    }
+    &__content {
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: space-between;
+        column-gap: 30px;
+        padding: 10px 0;
+    }
+	&__logo {
+        display: flex;
+        align-items: center;
+        max-width: 350px;
+        gap: 10px;        
+     }
+
+	&__menu {
+        display: flex;
+        align-items: center;
+     }
+	&__online {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+     }
+	&__question {
+        @include textBase(17px, 400);
+        span {
+            display: block;
+            font-weight: 700;
+        }
+     }
+	&__social-network {
+        display: flex;
+        gap: 5px;
+        position: relative;
+        z-index: 1;
+     }
+	&__telegram { 
+        &:hover img {
+            opacity: 0.8;
+        }
+        &:active img {
+            opacity: 1;
+            filter: brightness(0.8);
+        }
+     }
+	&__whatsapp {
+        &:hover img {
+            opacity: 0.8;
+        }
+        &:active img {
+            opacity: 1;
+            filter: brightness(0.8);
+        }
+     }
+	&__contacts {
+        @include textBase(17px, 400);
+        text-align: right;
+     }
+}
+
+.logo {
+	&__text {
+        @include textBase(17px, 400);
+     }
+}
+
+.menuOpen {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    column-gap: 30px;
+}
+.menu {
+	&__list {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        
+        & a {
+            color: black;
+        }
+     }
+	&__item { 
+        @include textBase(17px, 400);
+        line-height: 120%;
+        cursor: pointer;
+    }
+}
+
+.menu__burger {
+    display: none;
+}
+.contact {
+	&__tel {
+        @include textBase(28px, 700);
+     }
+	&__address {
+        @include textBase(17px, 400);
+     }
+	&__email {
+        @include textBase(17px, 400);
+        color: black;
+        text-decoration-line: underline;
+        &:hover {
+            color: #767676;   
+        }    
+     }
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    background: url(@img/bg-courthouse.png) no-repeat 70% top;
+    border-bottom: 0.5px solid rgba(138, 138, 138, 0.5);
+	&__container {
+        max-width: $maxWidthContainer;
+        display: flex;
+        flex: 1 1 auto;
+     }
+	&__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 790px;
+        margin: 130px 0 0 50px;
+     }
+	&__heading {
+        @include textBase(40px, 700);
+     }
+    &__img {
+        display: none;
+    }
+	&__text {
+        @include textBase(20px, 600);
+        line-height: 23px;
+        margin-bottom: 132px;
+     }
+}
+.quiz {
+	&__heading {
+        margin: 40px 0;
+        
+        span {
+            color: #1E8E31;
+        }
+     }
+	&__list {
+        @include textBase(18px, 400);
+        line-height: 23px;
+        max-width: 420px;
+        counter-reset: newNum;
+        list-style: none;
+        margin-left: 65px;
+     }
+
+	&__item {
+        counter-increment: newNum;
+        position: relative;
+        padding: 10px 0;
+
+        &::before {
+            content: "0" counter(newNum);
+            color: #1E8E31;
+            font-family: Inter;
+            font-size: 40px;
+            position: absolute;
+            left: -65px;
+            top: 20px;
+        }
+     }
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+   
+    &__container {
+        max-width: $maxWidthContainer;
+        display: flex;
+        justify-content: center;
+        padding: 0 50px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     }
+    &__heading {
+        @include textBase(40px, 700);
+        margin: 90px 0 50px 0;
+     }
+
+    &__about {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+     }
+    &__card {
+        padding: 30px 40px;
+        border-radius: 5px;
+        border: 1px solid #D9D9D9;
+        background: #F5F5F5;
+     }
+    &__icon {
+        margin-bottom: 20px;
+     }
+    &__text {
+        max-width: 269px;
+        @include textBase(20px, 400);
+        span {
+            font-weight: 700;
+        }
+     }
+    &__photoBox {
+        margin: 30px 0 90px 0;
+        position: relative;
+    }
+    &__photo {
+        width: 100%;
+     }
+
+    &__photoIcon {
+        @include textBase(18px, 700);
+        border-radius: 5px;
+        background: #FFF;
+        padding: 10px 25px;
+        position: absolute;
+        top: 45px;
+        left: 55px;
+    }
+}
+
+.consultation {
+    display: flex;
+    justify-content: center;
+    background: url(@img/bg-consultation.png) no-repeat #F5F5F5;
+   
+    &__container {
+        max-width: $maxWidthContainer;
+        display: flex;
+        justify-content: center;
+        padding: 0 50px;
+    }
+	&__content {
+        display: flex;
+        margin: 48px 0 53px 0;
+     }
+	&__cards {
+        display: flex;
+        gap: 22px;
+     }
+	&__card {
+        padding: 30px;
+        border-radius: 5px;
+        border: 1px solid #D9D9D9;
+        background: #FFF;
+      }
+}
+
+.card {
+    &__content {
+        max-width: 273px;
+        text-align: center;
+    }
+	&__name {
+        @include textBase(20px, 700);
+        padding: 20px 0;
+     }
+	&__post {
+        @include textBase(20px, 400);
+        padding-bottom: 20px;
+     }
+    &__post-indent {
+        margin-bottom: 25px;
+    }
+	&__tel {
+        @include textBase(20px, 700);
+        position: relative;
+        margin-left: 25px;
+        &::before {
+            content: url(@img/telephone.svg);
+            position: absolute;
+            top: 4px;
+            margin-left: -25px;
+         }
+     }
+
+}
+.form {
+	&__body {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 306px;
+        margin: 0 10px;
+     }
+	&__heading {
+        @include textBase(20px, 700);
+        text-align: center;
+        margin-bottom: 10px;
+     }
+	&__item {
+        &.error label {
+            color: #E60000;
+        }
+     }
+	&__label {
+        @include textBase(16px, 400);
+        display: block;
+        padding: 10px 0;
+     }
+	&__input {
+        width: 100%;
+        border-radius: 4px;
+        border: 1px solid #ABABAB;
+        background: #FFF;
+        padding: 20px 15px;
+
+        &.error {
+            border: 1px solid #E60000;
+        }
+
+        &::placeholder {
+            @include textBase(15px, 500);
+            color: #CDCDCD;
+            font-family: Inter;
+            line-height: 23px;
+        }
+     }
+	&__button {
+        @include textBase(17px, 700);
+        border-radius: 4px;
+        background: #1E8E31;
+        color: #FFF;
+        font-family: Inter;
+        line-height: 23px;
+        padding: 20px 25px;
+        margin: 20px 0;
+
+        &:hover {
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.20) 100%), #1E8E31;
+        }
+
+        &:active {
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #1E8E31;
+        }
+     }
+	&__accept {
+        @include textBase(11px, 400);
+        text-align: center;
+     }
+}
+
+.contacts {
+    display: flex;
+    justify-content: center;
+    background-color: #FFF;
+    background: url(@img/bg-contacts1.png) left bottom no-repeat, url(@img/bg-contacts2.png) right bottom no-repeat;
+    
+	&__container {
+        max-width: $maxWidthContainer;
+        display: flex;
+        flex: 1 1 auto;
+        padding: 0 50px;
+        
+     }
+	&__content {
+        display: flex;
+        margin: 80px 0 105px 0;
+        justify-content: space-between;
+        flex: 1 1 auto;
+     }
+	&__textBlock {
+        max-width: 496px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+     }
+	&__heading {
+        @include textBase(40px, 700);
+     }
+	&__tel {
+        @include textBase(20px, 400);
+     }
+    &__num {
+        @include textBase(30px, 700);
+        line-height: 143%;
+        padding-left: 28px;
+        position: relative;
+        &::before {
+            content: url(@img/telephone.svg);
+            position: absolute;
+            top: 0;
+            left: 0;
+         }
+     }
+	&__address {
+        @include textBase(20px,400);
+        max-width: 435px;
+     }
+    &__street {
+
+        & span {
+            font-weight: 700;
+        }
+     }
+	&__stations {
+        max-width: 458px;
+        border-radius: 5px;
+        background: #FAFAFA;
+        padding: 23px 20px 23px 26px;
+     }
+	&__station {
+        @include textBase(20px,400);
+        position: relative;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #B5D350;
+            margin-right: 16px;
+            margin-bottom: 2px;
+        }
+
+        &:nth-child(2)::before  {
+            background-color: #F8A328;
+        }
+
+        &:nth-child(3)::before  {
+            background-color: #A1A2A3;
+        }
+
+        &:last-child {
+            padding-left: 26px;
+        }
+
+        &:last-child::before {
+            content: url(@img/mark2.svg);
+            background-color: #FAFAFA;
+            position: absolute;
+            top: 4px;
+            left: 0;
+        }
+     }
+
+	&__email {
+        @include textBase(20px, 400);
+        a {
+            @include textBase(20px, 700);
+            text-decoration-line: underline;
+            color: black;
+            &:hover {
+                color: #767676;   
+            }    
+        }
+     }
+	&__links {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+
+     }
+	&__link {
+        display: flex;
+        flex-direction: row;
+        gap: 18px;
+
+        &:first-child {
+            color: #168FC0;
+        }
+
+        &:nth-child(2) {
+            color: #2DB475;
+        }
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+
+        p {
+            max-width: 145px;
+        }
+
+        &:hover img {
+            opacity: 0.8;
+        }
+        &:active img {
+            opacity: 1;
+            filter: brightness(0.8);
+        }
+
+     }
+	&__imgBlock {
+        max-width: 50%;
+
+     }
+	&__office {
+        width: 100%;
+        vertical-align: top; 
+    }
+    &__map {
+        width: 100%;
+    }
+	&__description {
+        @include textBase(20px,300);
+        text-align: center;
+        margin-top: 23px;
+     }
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background: #EEE;
+    border-top: 0.5px solid rgba(138, 138, 138, 0.5);
+
+	&__container {
+        max-width: $maxWidthContainer;
+        display: flex;
+        flex: 1 1 auto;
+        align-items: center;
+     }
+	&__content {
+        display: flex;
+        flex: 1 1 auto;
+        justify-content: space-between;
+        margin: 32px 50px;
+
+        @include textBase(15px,300);
+        color: #767676;
+     }
+	&__policy {
+        text-decoration-line: underline;
+        color: #767676;
+        &:hover {
+            color: black;   
+        }    
+     }
+}
+
+// Медиа-запросы ==========================================
+
+@media (max-width: $maxWidthContainer ) {
+    .header {
+        &__container {
+            padding: 0 ($minPadding + 10px); 
+        }
+        &__logo {
+            max-width: 45%;
+         }
+
+    }
+    .contact {
+        display: none;
+    } 
+
+    .menuOpen {
+        flex: 0 1 auto;
+        justify-content: flex-end;
+    }
+
+    .team {
+        &__card {
+            flex: 1 1 40%;
+        }
+        &__text {
+            max-width: 100%;
+            min-width: 271px;
+            & br {
+                display: none;
+            }
+        }
+        &__photoBox {
+            width: 100%;
+        }
+    }
+
+    .consultation {
+        background: url(@img/bg-consultation.png) left/cover no-repeat ;
+        &__cards {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__card {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .form {
+        flex: 0 1 692px;
+        &__body {
+            max-width: 100%;
+            width: 100%; 
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .header__logo p {
+        display: none;
+    }
+
+    .top {
+        background-position: 30% top;
+
+        &__content {
+            margin-left: $minPadding + 10px;
+            margin-top: 100px;
+        }
+
+        &__heading {
+            font-size: 36px;
+        }
+
+        &__text {
+            margin-bottom: 100px;
+        }
+     }
+
+    .team {
+        &__container {
+            padding: 0 ($minPadding + 10px);
+        }
+    }
+
+    .consultation {
+        &__container {
+            padding: 0 ($minPadding + 10px); 
+        }
+    }
+
+    .contacts {
+        &__container {
+            padding: 0 ($minPadding + 10px); 
+        }
+        &__street span::after {
+            content: ',';
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    body.lock {
+        overflow: hidden;
+    }
+    
+    .header {
+        height: 70px;
+        &__container {
+            padding: 0 $minPadding; 
+        }
+        &__content {
+            column-gap: 0;
+        }
+        &__logo {
+            max-width: 100%;
+        }
+        &__online {
+            min-width: 200px;
+            margin: 0 10px;
+        }
+    }
+    
+    .menu {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+        background-color: #fff;
+        padding: 15px 0;
+        &.active {
+            top: 70px;
+            justify-content: flex-end;
+            align-items: flex-start;
+        }
+        &__body {
+            width: 100%;    
+        }
+        &__list {
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+        &__item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px 20px;
+            transition: 0.3s;
+            &:focus, &:hover {
+                background: #F5F5F5;
+            }
+        }
+        &__burger {
+            display: block;
+            position: relative;
+            margin: auto 0;
+            width: 25px;
+            height: 20px;
+            z-index: 2;
+            cursor: pointer;
+
+            span {
+                background-color: black;
+                position: absolute;
+                top: 9px;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                transition: all 0.3s ease 0s;
+            }
+            &::after {
+                content: '';
+                background-color: black;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                bottom: 0;
+                transition: all 0.3s ease 0s;
+            }
+            &::before {
+                content: '';
+                background-color: black;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                top: 0;
+                transition: all 0.3s ease 0s;
+            }
+            &.active {
+                &::before {
+                    transform: rotate(45deg);
+                    top: 9px;
+                }
+                &::after {
+                    transform: rotate(-45deg);
+                    bottom: 9px;
+                }
+                & span {
+                transform: scale(0);
+                }
+            } 
+        }
+    }
+
+    .top {
+        background: #FFF;
+        &__container {
+            justify-content: center;
+        }
+        &__content {
+            margin-top: 40px;
+            margin-left: 0;
+            align-items: center;
+        }
+        &__heading {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            max-width: 570px;
+            padding: 0 10px;
+            & br {
+                display: none;
+            }
+        }
+        &__img {
+            display: block;
+            width: 100%;
+        }
+        &__text {
+            margin-bottom: 40px;
+        }
+    }
+
+    .quiz {
+        padding: 0 10px;
+        &__heading {
+            text-align: center;
+        }
+        &__list {
+            font-size: 16px;
+        }
+        &__item br{
+            display: none;
+        }
+    }
+
+    .team {
+        &__heading {
+            margin: 50px 0 30px 0;
+        }
+        &__about {
+            flex-direction: column-reverse;
+        }
+        &__cards {
+            margin-bottom: 20px;
+        }
+        &__card {
+            flex: 0 1 auto;
+            height: 240px;
+        }
+        &__container {
+            padding: 0 $minPadding;
+        }
+        &__text{
+            max-width: 269px;
+            & br {
+                display: inline;
+            }
+        }
+        &__photoIcon {
+            display: none;
+        }
+        &__photoBox{
+            margin: 0 0 30px 0;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        &__photo {
+            width: 125%;
+        }
+    }
+
+    .consultation {
+        background: #FFF;
+        &__card {
+            flex: 1 1 auto;
+            & img {
+                object-fit: cover;
+                width: 100%;
+            }
+        }
+    }
+
+    .card {
+        &__content {
+            max-width: 600px;
+            width: 100%;
+        }
+    }
+
+    .form {
+        flex: 1 1 auto;
+    }
+
+    .contacts {
+        background: #FFF;
+        &__container {
+            padding: 0 $minPadding;
+        }
+    }
+
+    .footer {
+        &__container {
+            flex-direction: column;
+            padding: 0 $minPadding;
+        }
+        &__content {
+            margin: 30px auto;
+            flex-direction: column;
+            text-align: center;
+            row-gap: 10px;
+        }
+    }
+}
+
+@media (max-width: 950px) {
+    .contacts {
+        &__content {
+            margin: 70px 0 40px 0;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        &__textBlock {
+            max-width: 100%;
+            justify-content: center;
+        }
+        &__imgBlock {
+            margin-top: 30px;
+            max-width: 100%;
+            & iframe {
+                height: 50vh;
+            }
+        }
+        &__communication {
+            margin: 0 auto;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .header {
+        position: fixed;
+        &__online.active {
+            flex-direction: column;
+            z-index: 2;
+        }
+        &__question span {
+            display: inline;
+        }
+        &__contacts.active {
+            display: flex;
+            flex-direction: column;
+            padding: 15px 0;
+            text-align: center;
+            row-gap: 15px;
+        }
+    }
+    .menuOpen {
+        position: fixed;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        overflow: auto;
+        background-color: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 15px;
+
+        &.active {
+            top: 70px;
+        }
+    }
+    .menu {
+        position: static;
+        &__item {
+            justify-content: center;
+        }
+    }
+    .top__container {
+        margin-top: 70px;
+    }
+    .team {
+        &__heading {
+            font-size: 24px;
+            margin-top: 70px;
+        }
+        &__about {
+            align-items: stretch;
+        }
+        &__cards {
+            align-items: stretch;
+            flex-direction: column;
+            margin: 0 10px 20px 10px;
+        }
+        &__card {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+
+            & div {
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .consultation__content {
+        margin: 0;
+    }
+
+    .form {
+        padding: 30px 17px;
+        &__body {
+            margin: 0;
+        }
+        &__button {
+            padding: 20px 0;
+        }
+    }
+
+    .contacts {
+        background: #FFF;
+        &__textBlock {
+            gap: 20px;
+        }
+        &__heading {
+            font-size: 24px;
+            text-align: center;
+        }
+        &__communication {
+            margin: 0;
+        }
+        &__links {
+            flex-direction: column;
+        }
+        &__map iframe {
+            max-height: 280px;
+        }
+    } 
+}
